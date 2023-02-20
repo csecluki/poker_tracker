@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block body %}
+  <h1>Dashboard</h1>
+  <a href="{% url 'account:home' %}">Accounts</a>
+  <a href="{% url 'session:home' %}">Sessions</a>
+{% endblock body %}

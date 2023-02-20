@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}New session{% endblock %}
+
+{% block body %}
+  <h1>Sessions</h1>
+  <form method="POST">
+    {{ form }}
+    {% csrf_token %}
+    <input type="submit" value="End">
+  </form>
+  <a href="{% url 'session:home' %}">Back</a>
+{% endblock body %}

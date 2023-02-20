@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Accounts{% endblock %}
+
+{% block body %}
+    <h1>Accounts</h1>
+    <a href="{% url 'account:add' %}">Add new account</a>
+    <a href="/">Back</a>
+
+    {% for account in accounts %}
+        <hr>
+        <div>
+            <p>{{ account.name }}</p>
+            <p>{{ account.balance }}{% if account.account_type == 'C' %} Chips{% else %}USD{% endif %}</p>
+        </div>
+    {% endfor %}
+{% endblock body %}

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load game_session_tags %}
+
+{% block title %}Sessions{% endblock %}
+
+{% block body %}
+    <h1>Sessions</h1>
+    {% if not active_session %}<a href="{% url 'session:start' %}">Start new session</a>{% endif %}
+    <a href="/">Back</a>
+
+    {% if active_session %}
+    <div>
+        <p>Active session:</p>
+        <div>
+            <p>{{ active_session.start }}</p>
+            <label for="rebuys_already">Rebuys</label>
+            <input id="rebuys_already" name="rebuys_already" type="number" value="0" min="0" step="1">
+        </div>
+        <a href="{% url 'session:end' %}">End session</a>
+    </div>
+    {% endif %}
+    <div>
+        <p>Last sessions:</p>
+        <table>
+            <tr>
+                <th>
+                    End
+                </th>
+                <th>
+                    Duration
+                </th>
+                <th>
+                    Tables
+                </th>
+                <th>
+                    Hands
+                </th>
+                <th>
+                    Rebuys
+                </th>
+                <th>
+                    Result
+                </th>
+                <th>
+                    ROA
+                </th>
+            </tr>
+            {% for session in ended_session %}
+                <tr>
+                    <td>
+                        {{ session.end }}
+                    </td>
+                    <td>
+                        {{ session.duration|duration }}
+                    </td>
+                    <td>
+                        {{ session.tables }}
+                    </td>
+                    <td>
+                        {{ session.hands }}
+                    </td>
+                    <td>
+                        {{ session.rebuys }}
+                    </td>
+                    <td>
+                        {{ session.balance_change }}
+                    </td>
+                    <td>
+                        {{ session.roa|percentage }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock body %}
