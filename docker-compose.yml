@@ -1,0 +1,24 @@
+services:
+
+  web:
+    volumes:
+      - static_data:/vol/web
+    env_file:
+      - .env
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+
+  nginx:
+    build:
+      context: ./nginx
+    volumes:
+      - static_data:/vol
+    ports:
+      - "80:80"
+    depends_on:
+      - web
+
+volumes:
+  static_data:
