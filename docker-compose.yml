@@ -9,6 +9,8 @@ services:
       context: .
     ports:
       - "8000:8000"
+    depends_on:
+      - nginx
 
   nginx:
     build:
@@ -17,8 +19,6 @@ services:
       - static_data:/vol
     ports:
       - "80:80"
-    depends_on:
-      - web
 
 volumes:
   static_data:
