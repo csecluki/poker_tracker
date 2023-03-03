@@ -16,7 +16,7 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-with open(BASE_DIR / '../config/project/config.json', 'r') as file:
+with open(os.path.join(BASE_DIR.parent, 'config/config.json')) as file:
     config = json.load(file)
 
 
@@ -24,12 +24,18 @@ with open(BASE_DIR / '../config/project/config.json', 'r') as file:
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config['secret_key']
+SECRET_KEY = config.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config.get('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = config.get('ALLOWED_HOSTS') # ['personalpokertracker.com', 'www.personalpokertracker.com']
+
+CSRF_COOKIE_SECURE = config.get('CSRF_COOKIE_SECURE')
+SESSION_COOKIE_SECURE = config.get('SESSION_COOKIE_SECURE')
+SECURE_SSL_REDIRECT = config.get('SECURE_SSL_REDIRECT')
+CSRF_TRUSTED_ORIGINS = config.get('CSRF_TRUSTED_ORIGINS')
+SECURE_PROXY_SSL_HEADER = config.get('SECURE_PROXY_SSL_HEADER')
 
 
 # Application definition
@@ -61,8 +67,8 @@ ROOT_URLCONF = 'project.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
-        'APP_DIRS': True,
+        'DIRS': [os.path.join(BASE_DIR.parent, 'templates')],
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -125,8 +131,14 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static",
+    BASE_DIR / "static/",
 ]
+
+MEDIA_URL = os.path.join(BASE_DIR, 'media/')
+
+STATIC_ROOT = os.path.join(BASE_DIR.parent, 'static/')
+
+MEDIA_ROOT = os.path.join(BASE_DIR.parent, 'media/')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
