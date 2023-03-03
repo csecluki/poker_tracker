@@ -1,0 +1,15 @@
+services:
+
+  web:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - web
