@@ -7,11 +7,13 @@
     <a href="{% url 'account:add' %}">Add new account</a>
     <a href="/">Back</a>
 
+    <div class="account-list">
     {% for account in accounts %}
         <hr>
-        <div>
+        <div class="account-item">
             <p>{{ account.name }}</p>
-            <p>{{ account.balance }}{% if account.account_type == 'C' %} Chips{% else %}USD{% endif %}</p>
+            <p>{{ account.balance }}{% if account.account_type == 'C' %} Chips{% else %} USD{% endif %}</p>
         </div>
     {% endfor %}
+    </div>
 {% endblock body %}

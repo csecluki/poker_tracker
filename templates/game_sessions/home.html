@@ -20,9 +20,11 @@
     </div>
     {% endif %}
     <div>
-        <p>Last sessions:</p>
         <table>
             <tr>
+                <th>
+                    Account
+                </th>
                 <th>
                     End
                 </th>
@@ -47,6 +49,9 @@
             </tr>
             {% for session in ended_session %}
                 <tr>
+                    <td>
+                        {{ session.account }}
+                    </td>
                     <td>
                         {{ session.end }}
                     </td>

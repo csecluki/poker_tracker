@@ -31,11 +31,12 @@ DEBUG = config.get('DEBUG')
 
 ALLOWED_HOSTS = config.get('ALLOWED_HOSTS') # ['personalpokertracker.com', 'www.personalpokertracker.com']
 
-CSRF_COOKIE_SECURE = config.get('CSRF_COOKIE_SECURE')
-SESSION_COOKIE_SECURE = config.get('SESSION_COOKIE_SECURE')
-SECURE_SSL_REDIRECT = config.get('SECURE_SSL_REDIRECT')
-CSRF_TRUSTED_ORIGINS = config.get('CSRF_TRUSTED_ORIGINS')
-SECURE_PROXY_SSL_HEADER = config.get('SECURE_PROXY_SSL_HEADER')
+if not DEBUG:
+    CSRF_COOKIE_SECURE = config.get('CSRF_COOKIE_SECURE')
+    SESSION_COOKIE_SECURE = config.get('SESSION_COOKIE_SECURE')
+    SECURE_SSL_REDIRECT = config.get('SECURE_SSL_REDIRECT')
+    CSRF_TRUSTED_ORIGINS = config.get('CSRF_TRUSTED_ORIGINS')
+    SECURE_PROXY_SSL_HEADER = config.get('SECURE_PROXY_SSL_HEADER')
 
 
 # Application definition

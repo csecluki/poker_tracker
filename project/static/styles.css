@@ -1,24 +1,124 @@
-table {
-    border-collapse: collapse;
-    width: 80%;
-    margin: 0 auto;
+:root {
+  --first-color: #24282B;
+  --second-color: #636B5E;
+  --third-color: #878260;
+  --fourth-color: #F2E39C;
+  --fifth-color: #A3894F;
+}
+
+* {
+    font-family: Arial, sans-serif;
+    background-color: var(--first-color);
+    color: var(--fourth-color);
+    margin: 0;
+    font-size: 16px;
+}
+
+body {
+}
+
+div.account-list {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+}
+
+div.account-item {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+select {
+    background-color: var(--second-color);
+    border: 0;
+    border-radius: 5px;
+}
+
+input {
+    background-color: var(--second-color);
+    border: 0;
+    border-radius: 5px;
+    padding: 3px;
+    padding-left: 5px;
+}
+
+input:focus-visible {
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: var(--fifth-color);
+    color: var(--first-color);
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+}
+
+form {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+h1 {
+    margin: 50px;
+    font-size: 2.5em;
     text-align: center;
 }
 
-th, td {
-    padding: 10px;
-    border: 1px solid #ddd;
+a {
+    width: fit-content;
+    display: block;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    text-decoration: none;
+    padding: 20px;
+}
+
+a:hover {
+    background-color: var(--second-color);
+}
+
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
+    width: 70%;
 }
 
 th {
-    background-color: #a7a7a7;
+    background-color: var(--second-color);
+    border: 1px solid var(--second-color);
+    font-size: 1.2em;
     font-weight: bold;
+    padding: 10px;
+    text-align: left;
 }
 
-tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+td {
+    border: 1px solid var(--second-color);
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
 }
 
-tbody tr:hover {
-    background-color: #ddd;
+tr:nth-child(even) {
+    background-color: var(--fifth-color);
+}
+
+tr:hover {
+    background-color: var(--second-color);
 }
