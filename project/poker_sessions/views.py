@@ -10,7 +10,7 @@ def home(request):
     return render(request,
                   'game_sessions/home.html',
                   {'active_session': active_session,
-                   'ended_session': ended_sessions}
+                   'ended_sessions': ended_sessions}
                   )
 
 

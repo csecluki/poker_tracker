@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load game_session_tags %}
 
 {% block title %}Sessions{% endblock %}
 
@@ -19,62 +18,5 @@
         <a href="{% url 'session:end' %}">End session</a>
     </div>
     {% endif %}
-    <div>
-        <table>
-            <tr>
-                <th>
-                    Account
-                </th>
-                <th>
-                    End
-                </th>
-                <th>
-                    Duration
-                </th>
-                <th>
-                    Tables
-                </th>
-                <th>
-                    Hands
-                </th>
-                <th>
-                    Rebuys
-                </th>
-                <th>
-                    Result
-                </th>
-                <th>
-                    ROA
-                </th>
-            </tr>
-            {% for session in ended_session %}
-                <tr>
-                    <td>
-                        {{ session.account }}
-                    </td>
-                    <td>
-                        {{ session.end }}
-                    </td>
-                    <td>
-                        {{ session.duration|duration }}
-                    </td>
-                    <td>
-                        {{ session.tables }}
-                    </td>
-                    <td>
-                        {{ session.hands }}
-                    </td>
-                    <td>
-                        {{ session.rebuys }}
-                    </td>
-                    <td>
-                        {{ session.balance_change }}
-                    </td>
-                    <td>
-                        {{ session.roa|percentage }}
-                    </td>
-                </tr>
-            {% endfor %}
-        </table>
-    </div>
+    {% include 'game_sessions/table.html' with sessions=ended_sessions %}
 {% endblock body %}

@@ -1,0 +1,67 @@
+{% load game_session_tags %}
+<div>
+    {% if sessions %}
+        <table id="session-table">
+            <thead>
+                <tr>
+                    <th>
+                        Account
+                    </th>
+                    <th>
+                        End
+                    </th>
+                    <th>
+                        Duration
+                    </th>
+                    <th>
+                        Tables
+                    </th>
+                    <th>
+                        Hands
+                    </th>
+                    <th>
+                        Rebuys
+                    </th>
+                    <th>
+                        Result
+                    </th>
+                    <th>
+                        ROA
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for session in sessions %}
+                    <tr>
+                        <td>
+                            {{ session.account }}
+                        </td>
+                        <td>
+                            {{ session.end }}
+                        </td>
+                        <td>
+                            {{ session.duration|duration }}
+                        </td>
+                        <td>
+                            {{ session.tables }}
+                        </td>
+                        <td>
+                            {{ session.hands }}
+                        </td>
+                        <td>
+                            {{ session.rebuys }}
+                        </td>
+                        <td>
+                            {{ session.balance_change }}
+                        </td>
+                        <td>
+                            {{ session.roa|percentage }}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No sessions</p>
+    {% endif %}
+</div>

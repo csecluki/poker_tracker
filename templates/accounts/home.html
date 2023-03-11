@@ -11,7 +11,7 @@
     {% for account in accounts %}
         <hr>
         <div class="account-item">
-            <p>{{ account.name }}</p>
+            <a href="{% url 'account:detail' account.id %}">{{ account.name }}</a>
             <p>{{ account.balance }}{% if account.account_type == 'C' %} Chips{% else %} USD{% endif %}</p>
         </div>
     {% endfor %}

@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block title %}Account {{ account.name }}{% endblock %}
+
+{% block body %}
+    <h1>Account {{ account.name }}</h1>
+    {% include 'game_sessions/table.html' with sessions=sessions %}
+{% endblock body %}
