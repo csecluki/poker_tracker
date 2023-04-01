@@ -1,0 +1,147 @@
+:root {
+  --first-color: #24282B;
+  --second-color: #636B5E;
+  --third-color: #878260;
+  --fourth-color: #F2E39C;
+  --fifth-color: #A3894F;
+}
+
+* {
+  font-family: Arial, sans-serif;
+  background-color: var(--first-color);
+  color: var(--fourth-color);
+  margin: 0;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+table, th, td {
+  border: 1px solid var(--fifth-color);
+  border-collapse: collapse;
+}
+
+th {
+    position: sticky;
+    top: 0;
+    background-color: var(--second-color);
+    border: 1px solid var(--second-color);
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 10px;
+    text-align: left;
+}
+
+td {
+    border: 1px solid var(--second-color);
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+tr:nth-child(even) {
+    background-color: var(--fifth-color);
+}
+
+h1 {
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: fit-content;
+}
+
+h2 {
+  text-align: center;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  width: fit-content;
+}
+
+h3 {
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: fit-content;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  background-color: var(--second-color);
+  border: 0;
+  border-radius: 5px;
+  padding: 3px;
+  padding-left: 5px;
+  margin-left: 10px;
+}
+
+input[type="submit"] {
+    background-color: var(--fifth-color);
+    color: var(--first-color);
+    padding: 5px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 10px;
+}
+
+div.body {
+  margin-top: 40px;
+  margin-bottom: 60px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+#rebuys_already {
+  width: 3em;
+}
+
+.menu {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+  padding: 20px;
+}
+
+.menu-item {
+  padding: 20px;
+}
+
+a.menu-item:hover {
+  background-color: var(--third-color);
+}
+
+.account-card {
+  margin: 0 auto;
+  padding: 20px;
+  width: fit-content;
+  min-width: 100px;
+}
+
+.active-session {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.session-table {
+  border-collapse: collapse;
+  margin: 0 auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  width: 90%;
+}

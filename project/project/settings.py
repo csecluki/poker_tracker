@@ -31,6 +31,8 @@ DEBUG = config.get('DEBUG')
 
 ALLOWED_HOSTS = config.get('ALLOWED_HOSTS') # ['personalpokertracker.com', 'www.personalpokertracker.com']
 
+CORS_ORIGIN_ALLOW_ALL = True
+
 if not DEBUG:
     CSRF_COOKIE_SECURE = config.get('CSRF_COOKIE_SECURE')
     SESSION_COOKIE_SECURE = config.get('SESSION_COOKIE_SECURE')
@@ -45,6 +47,9 @@ INSTALLED_APPS = [
     'poker_sessions',
     'accounts',
 
+    'rest_framework',
+    'corsheaders',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -56,6 +61,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

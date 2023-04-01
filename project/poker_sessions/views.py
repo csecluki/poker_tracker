@@ -1,38 +1,45 @@
-from django.shortcuts import render, redirect
+from django.http import JsonResponse
+from rest_framework.decorators import api_view
 
 from poker_sessions.models import Session
-from poker_sessions.forms import SessionForm, EndSessionForm
+from poker_sessions.serializers import EndSessionSerializer, SessionSerializer, StartSessionSerializer
 
 
+@api_view(['GET'])
 def home(request):
-    active_session = Session.active.first()
-    ended_sessions = Session.ended.all()
-    return render(request,
-                  'game_sessions/home.html',
-                  {'active_session': active_session,
-                   'ended_sessions': ended_sessions}
-                  )
+    sessions = Session.objects.all()
+    serializer = SessionSerializer(sessions, many=True)
+    return JsonResponse(serializer.data, safe=False, status=200)
 
 
+@api_view(['GET'])
+def ended(request):
+    sessions = Session.ended.all()
+    serializer = SessionSerializer(sessions, many=True)
+    return JsonResponse(serializer.data, safe=False, status=200)
+
+
+@api_view(['GET'])
+def active(request):
+    session = Session.active.first()
+    if not session:
+        return JsonResponse({}, status=200)
+    serializer = SessionSerializer(session, many=False)
+    return JsonResponse(serializer.data, safe=False, status=200)
+
+
+@api_view(['POST'])
 def start(request):
-    form = SessionForm(request.POST or None)
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        return redirect('session:home')
-    return render(request,
-                  'game_sessions/start.html',
-                  {'form': form}
-                  )
+    serializer = StartSessionSerializer(data=request.data)
+    if serializer.is_valid() and not Session.active.first():
+        serializer.save()
+        return JsonResponse(data={}, status=200)
+    return JsonResponse(data={}, status=400)
 
-
+@api_view(['POST'])
 def end(request):
-    form = EndSessionForm(request.POST or None)
-    if request.method == 'POST' and form.is_valid():
-        session, _ = Session.active.update_or_create(form.cleaned_data)
-        session.account.balance += session.balance_after - session.balance_before
-        session.account.save()
-        return redirect('session:home')
-    return render(request,
-                  'game_sessions/end.html',
-                  {'form': form}
-                  )
+    serializer = EndSessionSerializer(data=request.data)
+    active_session = Session.active.first()
+    if serializer.is_valid() and active_session.id == serializer.validated_data['id']:
+        Session.active.update_or_create(serializer.validated_data)
+    return JsonResponse(data={}, status=200)

@@ -16,11 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-from project import views
-
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.dashboard),
-    path('account/', include(('accounts.urls', 'account'), namespace='account')),
-    path('session/', include(('poker_sessions.urls', 'session'), namespace='session')),
+    path('api/accounts/', include(('accounts.urls', 'account'), namespace='account')),
+    path('api/sessions/', include(('poker_sessions.urls', 'session'), namespace='session')),
 ]
