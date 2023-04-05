@@ -9,8 +9,8 @@ import './App.css';
 import Dashboard from "./components/Dashboard";
 import Accounts from "./components/account/Accounts";
 import Sessions from "./components/poker_session/Sessions";
-import EndSession from "./components/poker_session/EndSession";
-import StartSession from "./components/poker_session/StartSession";
+import EndSession from "./components/poker_session/end/EndSession";
+import StartSession from "./components/poker_session/start/StartSession";
 import Menu from "./components/Menu";
 
 function App() {
