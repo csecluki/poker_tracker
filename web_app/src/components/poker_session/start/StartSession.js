@@ -7,7 +7,7 @@ const StartSession = () => {
         <div className="body">
             <h1>Start session</h1>
             <StartSessionForm />
-            <Link to={'/sessions'}>Back</Link>
+            <Link className="back" to={'/sessions'}>Back</Link>
         </div>
     )
 }

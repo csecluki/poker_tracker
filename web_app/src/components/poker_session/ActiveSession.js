@@ -56,6 +56,8 @@ const ActiveSession = () => {
     } else if (!session) {
         return (
             <div className="active-session">
+                <h2>Active session:</h2>
+                <p>No active session</p>
                 <Link to={"/sessions/start"}>Start new session</Link>
             </div>
         )
