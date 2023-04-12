@@ -76,7 +76,7 @@ const StartSessionForm = () => {
 
     return (
         <form className="start-session-form" onSubmit={handleSubmit}>
-            <div className="grid-merge-cols">
+            <div className="form-element merge-cols">
                 <label className="merge" htmlFor="form_account">
                     Account:
                     <select name="account" onChange={handleSelectChange}>
@@ -88,27 +88,31 @@ const StartSessionForm = () => {
                     </select>
                 </label>
             </div>
-            <div className="form-row">
+            <div className="form-element">
                 <label htmlFor="form_tables">
                     Tables:
                     <input className="start-session" type="number" name="tables" min="0" id="form_tables" onChange={handleIntInputChange}></input>
                 </label>
+            </div>
+            <div className="form-element">
                 <label htmlFor="form_big_blind">
                     Big Blind:
                     <input className="start-session" type="number" name="big_blind" min="0" id="form_big_blind" onChange={handleFloatInputChange}></input>
                 </label>
             </div>
-            <div className="form-row">
+            <div className="form-element">
                 <label htmlFor="form_capital_per_table">
                     Capital per table:
                     <input className="start-session" type="number" name="capital_per_table" min="0" id="form_capital_per_table" onChange={handleFloatInputChange}></input>
                 </label>
+            </div>
+            <div className="form-element">
                 <label htmlFor="form_balance_before">
                     Balance before:
                     <input className="start-session" type="number" name="balance_before" min="0" id="form_balance_before" onChange={handleFloatInputChange}></input>
                 </label>
             </div>
-            <div className="grid-merge-cols">
+            <div className="form-element merge-cols">
                 <input className="submit-form" type="submit" value="Start session"></input>
             </div>
         </form>

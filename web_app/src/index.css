@@ -133,6 +133,7 @@ div.body {
 
 .menu-item {
   padding: 20px;
+  font-weight: bold;
 }
 
 a.menu-item:hover {
@@ -176,17 +177,18 @@ a.menu-item:hover {
   margin-top: 50px;
 }
 
-.grid-merge-cols {
+.merge-cols {
   position: relative;
   grid-column: 1 / span 2;
   text-align: center;
 }
 
-.form-row {
+.form-element {
   display: grid;
-  grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr;
   grid-gap: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 input.start-session {
@@ -195,6 +197,7 @@ input.start-session {
 }
 
 input.submit-form {
+  margin-left: auto;
   float: right;
-  margin-top: 30px;
+  width: fit-content;
 }
