@@ -28,6 +28,7 @@ const Accounts = () => {
     }
     return (
         <div className="body">
+            <h1>Accounts</h1>
             {accounts.map(account => (
                 <AccountCard key={account.id} account={account} />
             ))}
